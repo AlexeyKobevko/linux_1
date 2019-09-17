@@ -46,7 +46,7 @@ docker-ce:
 ```bash
 $ sudo apt install docker-ce
 ```
-Теперь Docker установлен, демон запущен, и процесс будет запускаться при загрузке системы.  Убедимся, что процесс запущен:
+Теперь **Docker** установлен, демон запущен, и процесс будет запускаться при загрузке системы.  Убедимся, что процесс запущен:
 ```bash
 $ sudo systemctl status docker
 ```
@@ -105,3 +105,39 @@ $ docker exec -it db mysql -uroot -p
 ```
 Система приглашает к вводу команд:
 ![Db pass](./images/welcome.png)
+Меняю пароль БД:
+```bash
+$ ALTER USER root@localhost IDENTIFIED BY '123';
+```
+![Change pass](./images/rename_pass.png)
+
+#### ШАГ 4. Создание БД
+```mysql
+mysql> create database dz;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> use dz;
+Database changed
+
+mysql> create table colors (id int(16) NOT NULL auto_increment, name varchar(256), value varchar(256), PRIMARY KEY (id));
+Query OK, 0 rows affected, 1 warning (0.56 sec)
+
+mysql> INSERT INTO colors (name, value) VALUES ('Arlekin', '#44944A'), ('Scarlet', '#FF2400'), ('Bistr', '#3D2B1F'), ('Bronze', '#CD7F32'), ('Vanilla', '#D5713F');
+Query OK, 5 rows affected (0.06 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM colors
+    -> ;
++----+---------+---------+
+| id | name    | value   |
++----+---------+---------+
+|  1 | Arlekin | #44944A |
+|  2 | Scarlet | #FF2400 |
+|  3 | Bistr   | #3D2B1F |
+|  4 | Bronze  | #CD7F32 |
+|  5 | Vanilla | #D5713F |
++----+---------+---------+
+5 rows in set (0.00 sec)
+
+mysql>
+```
