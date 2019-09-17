@@ -94,9 +94,14 @@ $ docker search mysql
 $ docker pull mysql/mysql-server:latest
 $ docker run --name=db -d mysql/mysql-server:latest
 ```
-Пароль для MySQL
+Во время развертывания был установлен случайный пароль. Чтобы увидеть пароль, необходимо ввести команду:
 ```bash
 $ docker logs db
 ```
-![Иллюстрация к проекту](https://github.com/AlexeyDjedaj/linux_1/blob/master/images/db_pass.png)
-![Иллюстрация к проекту](./images/db_pass.png)
+![Db pass](./images/db_pass.png)
+Захожу на сервер БД и ввожу пароль из лога
+```bash
+$ docker exec -it db mysql -uroot -p
+```
+Система приглашает к вводу команд:
+![Db pass](./images/welcome.png)
