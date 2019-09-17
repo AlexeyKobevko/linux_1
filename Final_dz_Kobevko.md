@@ -88,9 +88,15 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 75cc25a13830        richarvey/nginx-php-fpm   "docker-php-entrypoi…"   4 minutes ago       Up 18 seconds       443/tcp, 0.0.0.0:80->80/tcp, 9000/tcp   nginx-php
 
 ```
-Произвожу те же действия для MySQL
+Произвожу те же действия для **MySQL**
 ```bash
 $ docker search mysql
-$ docker pull mysql
-$ docker run -d --name mysql -p 3306:3306 mysql
+$ docker pull mysql/mysql-server:latest
+$ docker run --name=db -d mysql/mysql-server:latest
 ```
+Пароль для MySQL
+```bash
+$ docker logs db
+```
+![Иллюстрация к проекту](https://github.com/AlexeyDjedaj/linux_1/blob/master/images/db_pass.png)
+![Иллюстрация к проекту](./images/db_pass.png)
