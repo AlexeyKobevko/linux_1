@@ -92,7 +92,7 @@ CONTAINER ID        IMAGE                     COMMAND                  CREATED  
 ```bash
 $ docker search mysql
 $ docker pull mysql/mysql-server:latest
-$ docker run --name=db -d mysql/mysql-server:latest
+$ docker run --name=db -p 3306:3306 -d mysql/mysql-server:latest
 ```
 Во время развертывания был установлен случайный пароль. Чтобы увидеть пароль, необходимо ввести команду:
 ```bash
