@@ -139,5 +139,24 @@ mysql> SELECT * FROM colors
 +----+---------+---------+
 5 rows in set (0.00 sec)
 
-mysql>
+mysql> exit
 ```
+#### ШАГ 5. Создание скрипта php
+
+```bash
+$ docker exec -it nginx-php bash
+bash-5.0# ls
+index.php
+bash-5.0# cat > index.php
+<?php                         
+
+//phpinfo();
+
+$link = mysqli_connect('mysql', 'root', '123');
+if (!$link) {
+    die('Ошибка соединения: ' . mysqli_error());
+}
+echo 'Успешно соединились';
+mysqli_close($link);
+```
+![Error](./images/error.png)
