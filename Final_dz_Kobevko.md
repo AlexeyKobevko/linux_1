@@ -158,5 +158,6 @@ if (!$link) {
 }
 echo 'Успешно соединились';
 mysqli_close($link);
+$
 ```
 ![Error](./images/error.png)
